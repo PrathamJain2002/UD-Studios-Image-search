@@ -1,0 +1,151 @@
+{
+  "info": {
+    "name": "Image Search OAuth API",
+    "description": "Collection of API endpoints for Image Search OAuth application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Get Current User",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/auth/user",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "auth", "user"]
+        }
+      }
+    },
+    {
+      "name": "Google OAuth",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/auth/google",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "auth", "google"]
+        },
+        "description": "Initiates Google OAuth login. This will redirect to Google login page."
+      }
+    },
+    {
+      "name": "Facebook OAuth",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/auth/facebook",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "auth", "facebook"]
+        },
+        "description": "Initiates Facebook OAuth login. This will redirect to Facebook login page."
+      }
+    },
+    {
+      "name": "GitHub OAuth",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/auth/github",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "auth", "github"]
+        },
+        "description": "Initiates GitHub OAuth login. This will redirect to GitHub login page."
+      }
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/auth/logout",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "auth", "logout"]
+        }
+      }
+    },
+    {
+      "name": "Search Images",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"term\": \"nature\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/search",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "search"]
+        },
+        "description": "Search for images. Requires authentication."
+      }
+    },
+    {
+      "name": "Get Top Searches",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/top-searches",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "top-searches"]
+        },
+        "description": "Get top 5 most frequent search terms. No authentication required."
+      }
+    },
+    {
+      "name": "Get Search History",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/history",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "history"]
+        },
+        "description": "Get authenticated user's search history. Requires authentication."
+      }
+    }
+  ]
+}
+

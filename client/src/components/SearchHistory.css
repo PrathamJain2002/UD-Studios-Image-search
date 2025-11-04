@@ -1,0 +1,84 @@
+.search-history-container {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.history-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 700;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #eee;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  padding: 12px 15px;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+}
+
+.history-item:hover {
+  background-color: #e9ecef;
+  border-color: #667eea;
+  transform: translateX(4px);
+}
+
+.history-term {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.history-timestamp {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.empty-history {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+}
+
+.empty-hint {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  color: #bbb;
+}
+
+/* Scrollbar styling */
+.search-history-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-history-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.search-history-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.search-history-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
