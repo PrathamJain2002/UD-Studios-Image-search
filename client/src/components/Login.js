@@ -1,9 +1,10 @@
 import React from 'react';
 import './Login.css';
+import API_URL from '../config/api';
 
 const Login = ({ onLogin }) => {
   const handleOAuthLogin = (provider) => {
-    window.location.href = `http://localhost:5000/api/auth/${provider}`;
+    window.location.href = `${API_URL}/api/auth/${provider}`;
   };
 
   return (

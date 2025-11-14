@@ -8,9 +8,30 @@ router.get('/google',
 );
 
 router.get('/google/callback',
-  passport.authenticate('google', { failureRedirect: process.env.CLIENT_URL || 'http://localhost:3000/login' }),
-  (req, res) => {
-    res.redirect(process.env.CLIENT_URL || 'http://localhost:3000');
+  (req, res, next) => {
+    passport.authenticate('google', (err, user, info) => {
+      if (err) {
+        console.error('Google OAuth error:', err);
+        return res.status(500).json({ 
+          error: 'Authentication failed', 
+          details: process.env.NODE_ENV === 'development' ? err.message : undefined 
+        });
+      }
+      if (!user) {
+        console.error('Google OAuth: No user returned', info);
+        return res.redirect(`${process.env.CLIENT_URL || 'http://localhost:3000'}/login?error=auth_failed`);
+      }
+      req.logIn(user, (err) => {
+        if (err) {
+          console.error('Login error:', err);
+          return res.status(500).json({ 
+            error: 'Login failed', 
+            details: process.env.NODE_ENV === 'development' ? err.message : undefined 
+          });
+        }
+        return res.redirect(process.env.CLIENT_URL || 'http://localhost:3000');
+      });
+    })(req, res, next);
   }
 );
 
@@ -20,9 +41,30 @@ router.get('/facebook',
 );
 
 router.get('/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: process.env.CLIENT_URL || 'http://localhost:3000/login' }),
-  (req, res) => {
-    res.redirect(process.env.CLIENT_URL || 'http://localhost:3000');
+  (req, res, next) => {
+    passport.authenticate('facebook', (err, user, info) => {
+      if (err) {
+        console.error('Facebook OAuth error:', err);
+        return res.status(500).json({ 
+          error: 'Authentication failed', 
+          details: process.env.NODE_ENV === 'development' ? err.message : undefined 
+        });
+      }
+      if (!user) {
+        console.error('Facebook OAuth: No user returned', info);
+        return res.redirect(`${process.env.CLIENT_URL || 'http://localhost:3000'}/login?error=auth_failed`);
+      }
+      req.logIn(user, (err) => {
+        if (err) {
+          console.error('Login error:', err);
+          return res.status(500).json({ 
+            error: 'Login failed', 
+            details: process.env.NODE_ENV === 'development' ? err.message : undefined 
+          });
+        }
+        return res.redirect(process.env.CLIENT_URL || 'http://localhost:3000');
+      });
+    })(req, res, next);
   }
 );
 
@@ -32,9 +74,30 @@ router.get('/github',
 );
 
 router.get('/github/callback',
-  passport.authenticate('github', { failureRedirect: process.env.CLIENT_URL || 'http://localhost:3000/login' }),
-  (req, res) => {
-    res.redirect(process.env.CLIENT_URL || 'http://localhost:3000');
+  (req, res, next) => {
+    passport.authenticate('github', (err, user, info) => {
+      if (err) {
+        console.error('GitHub OAuth error:', err);
+        return res.status(500).json({ 
+          error: 'Authentication failed', 
+          details: process.env.NODE_ENV === 'development' ? err.message : undefined 
+        });
+      }
+      if (!user) {
+        console.error('GitHub OAuth: No user returned', info);
+        return res.redirect(`${process.env.CLIENT_URL || 'http://localhost:3000'}/login?error=auth_failed`);
+      }
+      req.logIn(user, (err) => {
+        if (err) {
+          console.error('Login error:', err);
+          return res.status(500).json({ 
+            error: 'Login failed', 
+            details: process.env.NODE_ENV === 'development' ? err.message : undefined 
+          });
+        }
+        return res.redirect(process.env.CLIENT_URL || 'http://localhost:3000');
+      });
+    })(req, res, next);
   }
 );
 

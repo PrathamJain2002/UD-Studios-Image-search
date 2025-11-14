@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import API_URL from './config/api';
 
 axios.defaults.withCredentials = true;
 
@@ -17,7 +18,7 @@ function App() {
 
   const checkAuth = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/auth/user');
+      const response = await axios.get(`${API_URL}/api/auth/user`);
       if (response.data.authenticated) {
         setUser(response.data.user);
       }
@@ -30,7 +31,7 @@ function App() {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/logout');
+      await axios.post(`${API_URL}/api/auth/logout`);
       setUser(null);
     } catch (error) {
       console.error('Logout failed:', error);

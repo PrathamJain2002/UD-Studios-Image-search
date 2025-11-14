@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './TopSearches.css';
+import API_URL from '../config/api';
 
 const TopSearches = () => {
   const [topSearches, setTopSearches] = useState([]);
@@ -15,7 +16,7 @@ const TopSearches = () => {
 
   const fetchTopSearches = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/top-searches');
+      const response = await axios.get(`${API_URL}/api/top-searches`);
       setTopSearches(response.data.topSearches);
     } catch (error) {
       console.error('Failed to fetch top searches:', error);

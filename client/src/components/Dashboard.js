@@ -5,6 +5,7 @@ import TopSearches from './TopSearches';
 import SearchBar from './SearchBar';
 import ImageGrid from './ImageGrid';
 import SearchHistory from './SearchHistory';
+import API_URL from '../config/api';
 
 const Dashboard = ({ user, onLogout }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,7 +20,7 @@ const Dashboard = ({ user, onLogout }) => {
 
   const fetchHistory = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/history');
+      const response = await axios.get(`${API_URL}/api/history`);
       setHistory(response.data.history);
     } catch (error) {
       console.error('Failed to fetch history:', error);
@@ -33,7 +34,7 @@ const Dashboard = ({ user, onLogout }) => {
     setSelectedImages(new Set());
     
     try {
-      const response = await axios.post('http://localhost:5000/api/search', {
+      const response = await axios.post(`${API_URL}/api/search`, {
         term: term.trim()
       });
       
