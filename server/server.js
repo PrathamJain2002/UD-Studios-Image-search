@@ -70,6 +70,28 @@ app.use('/api/auth', authRoutes);
 app.use('/api', searchRoutes);
 app.use('/api', historyRoutes);
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    message: 'Image Search OAuth API Server',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      auth: {
+        google: '/api/auth/google',
+        facebook: '/api/auth/facebook',
+        github: '/api/auth/github',
+        user: '/api/auth/user',
+        logout: '/api/auth/logout'
+      },
+      search: '/api/search',
+      topSearches: '/api/top-searches',
+      history: '/api/history'
+    }
+  });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
